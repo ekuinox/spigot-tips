@@ -1,0 +1,4 @@
+name: SpigotTips
+version: 0.0.1
+main: dev.ekuinox.spigot_tips
+api-version: "1.15"
