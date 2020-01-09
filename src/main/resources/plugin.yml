@@ -3,6 +3,10 @@ version: 0.0.1
 main: dev.ekuinox.spigot_tips.Plugin
 api-version: "1.15"
 commands:
+  tips:
+    description: custom tips
+    usage: /tips help
+permissions:
   tips.*:
     default: op
     children:
