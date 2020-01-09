@@ -2,3 +2,16 @@ name: SpigotTips
 version: 0.0.1
 main: dev.ekuinox.spigot_tips.Plugin
 api-version: "1.15"
+commands:
+  tips.*:
+    default: op
+    children:
+      tips.create: true
+      tips.show: true
+      tips.help: true
+  tips.create:
+    default: op
+  tips.show:
+    default: true
+  tips.help:
+    default: true
