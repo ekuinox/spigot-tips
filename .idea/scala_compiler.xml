@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="spigot-tips" />
+    <profile name="sbt 1" modules="spigot-tips,spigot-tips_4020" />
   </component>
 </project>
