@@ -4,3 +4,11 @@
 
 SpigotサーバにTipsというかメモ機能を追加するだけのプラグイン
 
+## Usage
+
+- 新しくTipsを追加する
+    + `/tips create <title> <body>`
+
+- Tipsを表示する
+    + `/tips show <title>`
+    
