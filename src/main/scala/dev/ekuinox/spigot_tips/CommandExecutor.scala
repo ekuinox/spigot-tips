@@ -3,6 +3,11 @@ package dev.ekuinox.spigot_tips
 import org.bukkit.command.{Command, CommandSender, CommandExecutor => BukkitCommandExecutor}
 
 object CommandExecutor extends BukkitCommandExecutor {
+  val TIPS_ROUTE_PERMISSION = "tips"
+  val CREATE_PERMISSION: String = TIPS_ROUTE_PERMISSION + ".create"
+  val SHOW_PERMISSION: String = TIPS_ROUTE_PERMISSION + ".show"
+  val HELP_PERMISSION: String = TIPS_ROUTE_PERMISSION + ".help"
+
   override def onCommand(sender: CommandSender, command: Command, label: String, args: Array[String]): Boolean = {
     if (args == null) return true
     if (args.isEmpty) {
