@@ -3,12 +3,11 @@ package dev.ekuinox.spigot_tips
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 
-object TipsManager {
-  private val configFile = Plugin.tipsFile
+class TipsManager(configFile: File) {
   private val config = YamlConfiguration.loadConfiguration(configFile)
 
   def create(newTips: Tips) = {
-    config.set(newTips.title, newTips)
+    config.set(newTips.title, newTips.body)
     save()
   }
 
