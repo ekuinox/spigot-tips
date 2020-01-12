@@ -2,7 +2,7 @@ package dev.ekuinox.spigot_tips
 
 import org.bukkit.command.{Command, CommandSender, CommandExecutor => BukkitCommandExecutor}
 
-object CommandExecutor extends BukkitCommandExecutor {
+class CommandExecutor(tipsManager: TipsManager) extends BukkitCommandExecutor {
   val TIPS_ROUTE_PERMISSION = "tips"
   val CREATE_PERMISSION: String = TIPS_ROUTE_PERMISSION + ".create"
   val SHOW_PERMISSION: String = TIPS_ROUTE_PERMISSION + ".show"
@@ -30,7 +30,7 @@ object CommandExecutor extends BukkitCommandExecutor {
 
     val newTips = Tips(args(1), args(2))
 
-    TipsManager.create(newTips)
+    tipsManager.create(newTips)
 
     sender.sendMessage(s"${newTips.title}に${newTips.body}を登録しました")
 
@@ -40,7 +40,7 @@ object CommandExecutor extends BukkitCommandExecutor {
     if (!sender.hasPermission(SHOW_PERMISSION)) return
     if (args.length < 2) return
 
-    val message = TipsManager.get(args(1)) match {
+    val message = tipsManager.get(args(1)) match {
       case Some(tips) => s"${tips.body}"
       case None => s"${args(1)}に対応するTipsが見つかりませんでした"
     }
