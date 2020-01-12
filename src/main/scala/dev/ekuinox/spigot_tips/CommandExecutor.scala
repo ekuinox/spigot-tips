@@ -6,14 +6,14 @@ object CommandExecutor extends BukkitCommandExecutor {
   override def onCommand(sender: CommandSender, command: Command, label: String, args: Array[String]): Boolean = {
     if (args == null) return true
     if (args.isEmpty) {
-      help()
+      help(sender, args)
       return true
     }
 
     args(0) match {
-      case "create" => create()
-      case "show" => show()
-      case "help" => help()
+      case "create" => create(sender, args)
+      case "show" => show(sender, args)
+      case "help" => help(sender, args)
     }
 
     true
