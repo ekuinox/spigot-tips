@@ -1,22 +1,23 @@
 package dev.ekuinox.spigot_tips
 
-import scala.collection.mutable.{Map => MutableMap}
+import org.bukkit.configuration.file.YamlConfiguration
+import java.io.File
 
-object TipsManager extends {
-  private val tipsCollection = MutableMap[String, Tips]()
+object TipsManager {
+  private val configFile = Plugin.tipsFile
+  private val config = YamlConfiguration.loadConfiguration(configFile)
 
   def create(newTips: Tips) = {
-    tipsCollection(newTips.title) = newTips
+    config.set(newTips.title, newTips)
+    save()
   }
 
-  def get(title: String) = tipsCollection.get(title)
-
-  def save(): Unit = {
-
+  def get(title: String): Option[Tips] = {
+    config.getString(title) match {
+      case null => None
+      case body: String => Some(Tips(title, body))
+    }
   }
 
-  def load(): Unit = {
-
-  }
-
+  def save() = config.save(configFile)
 }
