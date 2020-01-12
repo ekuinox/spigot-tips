@@ -24,15 +24,15 @@ object CommandExecutor extends BukkitCommandExecutor {
     true
   }
 
-  def create(): Unit = {
+  def create(sender: CommandSender, args: Array[String]): Unit = {
 
   }
 
-  def show(): Unit = {
+  def show(sender: CommandSender, args: Array[String]): Unit = {
 
   }
 
-  def help(): Unit = {
+  def help(sender: CommandSender, args: Array[String]): Unit = {
 
   }
 
