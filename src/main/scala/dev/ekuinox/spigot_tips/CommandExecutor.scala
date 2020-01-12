@@ -25,10 +25,27 @@ object CommandExecutor extends BukkitCommandExecutor {
   }
 
   def create(sender: CommandSender, args: Array[String]): Unit = {
+    if (!sender.hasPermission(CREATE_PERMISSION)) return
+    if (args.length < 3) return
+
+    val newTips = Tips(args(1), args(2))
+
+    TipsManager.create(newTips)
+
+    sender.sendMessage(s"${newTips.title}に${newTips.body}を登録しました")
 
   }
 
   def show(sender: CommandSender, args: Array[String]): Unit = {
+    if (!sender.hasPermission(SHOW_PERMISSION)) return
+    if (args.length < 2) return
+
+    val message = TipsManager.get(args(1)) match {
+      case Some(tips) => s"${tips.body}"
+      case None => s"${args(1)}に対応するTipsが見つかりませんでした"
+    }
+
+    sender.sendMessage(message)
 
   }
 
